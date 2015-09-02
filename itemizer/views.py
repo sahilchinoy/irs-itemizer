@@ -85,5 +85,6 @@ class CommitteeDetailView(DetailView):
     Information about a specific committee.
     """
     model = Committee
+    template_name = "itemizer/committee_detail.html"
     slug_url_kwarg = 'EIN'
     slug_field = 'EIN'

@@ -7,7 +7,7 @@ The [archive](http://forms.irs.gov/app/pod/dataDownload/dataDownload) is updated
 
 # Download
 
-This project uses the `django-irs-filings` app, which takes care of downloading, parsing, and loading filings. To use it in your own Django project, just run:
+This project uses the `django-irs-filings` [app](https://github.com/sahilchinoy/django-irs-filings), which takes care of downloading, parsing, and loading filings. To use it in your own Django project, just run:
 
 ```bash
 $ pip install django-irs-filings
