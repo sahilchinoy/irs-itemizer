@@ -2,7 +2,6 @@
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_DIR = os.path.join(BASE_DIR,'irs','data')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 't)b^x87f6^qd*93_-^p)5=0(3k0t2_j#)9q@eep_gfeobjb3y1'
@@ -17,7 +16,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'bootstrap_pagination',
-    'irs'
+    'irs',
+    'itemizer',
 )
 
 MIDDLEWARE_CLASSES = (

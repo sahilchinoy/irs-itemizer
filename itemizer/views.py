@@ -13,7 +13,7 @@ class FilingListView(ListView):
     """
 
     model = F8872
-    template_name = 'irs/filing_list.html'
+    template_name = 'itemizer/filing_list.html'
     paginate_by = 15
     queryset = F8872.objects.exclude(is_amended=True)
 
@@ -23,7 +23,7 @@ class SAView(ListView):
     List of contributions for a particular filing.
     """
     model = Contribution
-    template_name = 'irs/sa_list.html'
+    template_name = 'itemizer/sa_list.html'
 
     def get_queryset(self, **kwargs):
         return Contribution.objects.filter(
@@ -54,7 +54,7 @@ class SBView(ListView):
     List of expenditures for a particular filing.
     """
     model = Expenditure
-    template_name = "irs/sb_list.html"
+    template_name = "itemizer/sb_list.html"
 
     def get_queryset(self, **kwargs):
         return Expenditure.objects.filter(
