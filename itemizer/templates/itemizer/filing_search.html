@@ -1,0 +1,37 @@
+{% extends 'itemizer/filing_list_base.html' %}
+
+{% load humanize %}
+{% load bootstrap_pagination %}
+
+{% block list %}
+<table class="table">
+<thead>
+	<tr>
+		<th style="width: 50%">Committee</th>
+		<th style="width: 15%">Start</th>
+		<th style="width: 15%">End</th>
+		<th style="width: 10%">Contributions</th>
+		<th style="width: 10%">Expenditures</th>
+	</tr>
+</thead>
+<tbody>
+	{% for result in object_list %}
+	<tr>
+		<td><a href="{% url 'committee' result.object.EIN %}">{{ result.object.organization_name }}</a></td>
+		<td>{{ result.object.begin_date }}</td>
+		<td>{{ result.object.end_date }}</td>
+		<td>
+			{% if result.object.schedule_a_indicator == 0 %}
+			<a href="{% url 'sa' result.object.form_id_number %}">${{ result.object.schedule_a_total | intcomma }}</a>
+			{% endif %}
+		</td>
+		<td>
+			{% if result.object.schedule_b_indicator == 0 %}
+			<a href="{% url 'sb' result.object.form_id_number %}">${{ result.object.schedule_b_total | intcomma }}</a>
+			{% endif %}
+		</td>
+	</tr>
+	{% endfor %}
+</tbody>
+</table>
+{% endblock %}

@@ -6,6 +6,7 @@ from itemizer.views import *
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', FilingListView.as_view(), name='filings'),
+    url(r'^filings/search$', FilingSearchView.as_view(), name='filings-search'),
     url(
     	r'^filings/(?P<filing_id>([0-9]+))/sa/$',
     	SAView.as_view(),

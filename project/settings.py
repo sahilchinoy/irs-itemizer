@@ -18,6 +18,7 @@ INSTALLED_APPS = (
     'bootstrap_pagination',
     'irs',
     'itemizer',
+    'watson',
 )
 
 MIDDLEWARE_CLASSES = (

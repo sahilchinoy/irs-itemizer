@@ -1,10 +1,10 @@
 from django.shortcuts import render
+import watson
 from djqscsv import render_to_csv_response
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.base import TemplateView
 from irs.models import F8872, Contribution, Expenditure, Committee
-
 
 class FilingListView(ListView):
     """
@@ -16,6 +16,25 @@ class FilingListView(ListView):
     template_name = 'itemizer/filing_list.html'
     paginate_by = 15
     queryset = F8872.objects.exclude(is_amended=True)
+
+
+class FilingSearchView(ListView):
+    """
+    Search F8872 filings.
+    """
+
+    model = F8872
+    template_name = 'itemizer/filing_search.html'
+    paginate_by = 15
+    queryset = F8872.objects.exclude(is_amended=True)
+
+    def get_queryset(self):
+        """Returns the initial queryset."""
+        return watson.search(self.get_query(self.request))
+
+    def get_query(self, request):
+        """Parses the query from the request."""
+        return request.GET.get('q', "").strip()
 
 
 class SAView(ListView):
