@@ -9,18 +9,18 @@ Filing {{ filing_id }} | IRS Itemizer
 {% block content %}
 	<h4><a href="{% url 'filings' %}">Back to filings</a></h4>
 	<h2>Filing {{ filing_id }} for <a href="{% url 'committee' EIN %}">{{ committee_name }}</a></h2>
-	<h3>{{ object_list.count | intcomma }} expenditure{{ object_list.count | pluralize }}</h3>
-	<p><a href="{% url 'sb_csv' filing_id %}">Download expenditures as CSV</a></p>
-	<p><a href="{% url 'sa' filing_id %}">See contributions</a></p>
+	<p class="lead">{{ object_list.count | intcomma }} expenditure{{ object_list.count | pluralize }}</p>
+	<p><i class="fa fa-download" aria-hidden="true"></i> &nbsp; <a href="{% url 'sb_csv' filing_id %}">Download CSV</a></p>
+	<p><i class="fa fa-gift" aria-hidden="true"></i> &nbsp; <a href="{% url 'sa' filing_id %}">See contributions</a></p>
 
-	<table class="table">
+	<table class="table table-striped">
 	<thead>
 		<tr>
 			<th style="width: 3%"></th>
 			<th style="width: 40%">Recipient name</th>
 			<th style="width: 35%">Purpose</th>
 			<th style="width: 10%">Date</th>
-			<th style="width: 10%">Amount</th>
+			<th style="width: 10%; text-align: right;">Amount</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -30,7 +30,7 @@ Filing {{ filing_id }} | IRS Itemizer
 			<td>{{ expenditure.recipient_name }}</td>
 			<td>{{ expenditure.expenditure_purpose }}</td>
 			<td>{{ expenditure.expenditure_date }}</td>
-			<td>${{ expenditure.expenditure_amount | intcomma }}</td>
+			<td style="text-align: right;">${{ expenditure.expenditure_amount | intcomma }}</td>
 		</tr>
 		{% endfor %}
 	</tbody>

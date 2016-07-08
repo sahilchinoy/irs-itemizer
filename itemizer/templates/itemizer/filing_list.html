@@ -4,14 +4,14 @@
 {% load bootstrap_pagination %}
 
 {% block list %}
-<table class="table">
+<table class="table table-striped">
 <thead>
 	<tr>
 		<th style="width: 50%">Committee</th>
 		<th style="width: 15%">Start</th>
 		<th style="width: 15%">End</th>
-		<th style="width: 10%">Contributions</th>
-		<th style="width: 10%">Expenditures</th>
+		<th style="width: 10%; text-align: right;">Contributions</th>
+		<th style="width: 10%; text-align: right;">Expenditures</th>
 	</tr>
 </thead>
 <tbody>
@@ -20,14 +20,18 @@
 		<td><a href="{% url 'committee' filing.EIN %}">{{ filing.organization_name }}</a></td>
 		<td>{{ filing.begin_date }}</td>
 		<td>{{ filing.end_date }}</td>
-		<td>
+		<td style="text-align: right;">
 			{% if filing.schedule_a_indicator == 0 %}
 			<a href="{% url 'sa' filing.form_id_number %}">${{ filing.schedule_a_total | intcomma }}</a>
+			{% else %}
+			&mdash;
 			{% endif %}
 		</td>
-		<td>
+		<td style="text-align: right;">
 			{% if filing.schedule_b_indicator == 0 %}
 			<a href="{% url 'sb' filing.form_id_number %}">${{ filing.schedule_b_total | intcomma }}</a>
+			{% else %}
+			&mdash;
 			{% endif %}
 		</td>
 	</tr>

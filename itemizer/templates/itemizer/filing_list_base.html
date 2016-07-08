@@ -8,18 +8,18 @@ Filings | IRS Itemizer
 {% endblock %}
 
 {% block content %}
-	<div style="text-align: center; background-color: #FFF0F5; border-radius: 10px; padding: 5px; margin-top: 10px; margin-bottom: 20px;">
-		<h1><a style="color:black;" href="{% url 'filings' %}">IRS Political Committee Itemizer</a></h1>
-		<p class="lead">Some political organizations file periodic disclosure reports <a href="http://www.irs.gov/Charities-&-Non-Profits/Political-Organizations/Political-Organization-Filing-and-Disclosure">with the IRS</a> under § 527 of the U.S. Tax Code.</p>
-		<p>Browse, link to and download their contributions and expenditures here. Or, <a href="https://github.com/sahilchinoy/django-irs-filings">load the data in your own app.</a></p>
-		<p>The IRS updates their data every Sunday.</p>
+	<div style="text-align: center; background-color: #FFF0F5; border-radius: 10px; padding: 5px 50px 5px 50px; margin-top: 10px; margin-bottom: 20px;">
+		<h1>IRS Itemizer</h1>
+		<p class="lead">Explore campaign finance data reported to the IRS</p>
+		<p>Some political organizations file financial disclosure reports <a href="http://www.irs.gov/Charities-&-Non-Profits/Political-Organizations/Political-Organization-Filing-and-Disclosure">with the IRS</a>. Browse, link to and download their contributions and expenditures here. Or, <a href="https://github.com/sahilchinoy/django-irs-filings">load the data in your own app.</a></p>
+		<p>The IRS updates the archive every Sunday.</p>
 		<p style="font-size: 12px;">by <a href="http://sahilchinoy.com">Sahil Chinoy</a> and inspired by <a href="https://projects.propublica.org/itemizer/">ProPublica's FEC Itemizer</a></p>
 	</div>
 
-	<h4>Search filings by committee name</h4>
+	<h4><i class="fa fa-search" aria-hidden="true"></i> Search by committee</h4>
 	<form style="max-width: 300px;" action="{% url 'filings-search' %}">
 		<div class="input-group">
-			<input class="form-control" name="q" value="{{request.GET.q}}">
+			<input class="form-control" name="q" value="{{ request.GET.q }}">
 			<span class="input-group-btn">
 				<button class="btn btn-default" type="submit">Search</button>
 			</span>

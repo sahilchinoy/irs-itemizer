@@ -1,5 +1,5 @@
-from django.shortcuts import render
 import watson
+from django.shortcuts import render
 from djqscsv import render_to_csv_response
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -14,7 +14,7 @@ class FilingListView(ListView):
 
     model = F8872
     template_name = 'itemizer/filing_list.html'
-    paginate_by = 15
+    paginate_by = 50
     queryset = F8872.objects.exclude(is_amended=True)
 
 
