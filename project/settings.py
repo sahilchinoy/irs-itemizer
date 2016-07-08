@@ -67,9 +67,9 @@ USE_TZ = False
 
 # Import proper settings
 try:
-    from settings_dev import *
+    from .settings_dev import *
 except ImportError:
-    from settings_prod import *
+    from .settings_prod import *
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
