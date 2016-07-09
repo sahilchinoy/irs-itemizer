@@ -1,4 +1,4 @@
-import watson
+from watson import search as watson
 from django.shortcuts import render
 from djqscsv import render_to_csv_response
 from django.views.generic.list import ListView
